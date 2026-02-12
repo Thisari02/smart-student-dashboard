@@ -1,0 +1,5 @@
+{
+  "name": "EduPulse - Smart Student Learning Dashboard",
+  "description": "A high-end SaaS-style student learning dashboard built with React, Tailwind CSS, and Recharts. Features comprehensive analytics, student management, and real-time academic insights.",
+  "requestFramePermissions": []
+}
