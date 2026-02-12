@@ -6,10 +6,11 @@ import { MOCK_STUDENTS, MOCK_ACTIVITIES } from '../../constants';
  * Service to handle communications with Google Gemini API.
  */
 class AIService {
-  private ai: GoogleGenAI;
+  private ai: GoogleGenAI | null;
 
   constructor() {
-    this.ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+    const apiKey = import.meta.env.VITE_GEMINI_API_KEY || '';
+    this.ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
   }
 
   /**
@@ -27,6 +28,10 @@ class AIService {
       If a student is underperforming (score < 80), suggest specific interventions.
       Always suggest 2-3 follow-up "Action Prompts" at the end: [ACTION: Action text]
     `;
+
+    if (!this.ai) {
+      throw new Error('Missing Gemini API key');
+    }
 
     try {
       const response = await this.ai.models.generateContent({

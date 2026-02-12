@@ -1,11 +1,12 @@
 
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import Navbar from '../components/Navbar';
-import AIChatBot from '../components/AIChatBot';
 import { useApp } from '../context/AppContext';
+
+const AIChatBot = lazy(() => import('../components/AIChatBot'));
 
 /**
  * Root layout component that orchestrates Navigation, Main Content, and Overlays.
@@ -13,6 +14,7 @@ import { useApp } from '../context/AppContext';
 export const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { isSidebarOpen, setIsSidebarOpen, theme, role, toggleTheme, toggleRole } = useApp();
   const location = useLocation();
+  const hasGeminiKey = Boolean(import.meta.env.VITE_GEMINI_API_KEY);
 
   return (
     <div className={`min-h-screen flex transition-colors duration-300 ${theme === 'dark' ? 'bg-slate-900 text-white' : 'bg-gray-50 text-slate-900'}`}>
@@ -60,7 +62,11 @@ export const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }
         </main>
       </div>
 
-      <AIChatBot />
+      {hasGeminiKey && (
+        <Suspense fallback={null}>
+          <AIChatBot />
+        </Suspense>
+      )}
     </div>
   );
 };
