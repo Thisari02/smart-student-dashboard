@@ -20,13 +20,13 @@ export const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }
     <div className={`min-h-screen flex transition-colors duration-300 ${theme === 'dark' ? 'bg-slate-900 text-white' : 'bg-gray-50 text-slate-900'}`}>
       {/* Mobile Sidebar Overlay */}
       <AnimatePresence>
-        {!isSidebarOpen && (
+        {isSidebarOpen && (
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/20 backdrop-blur-sm z-30 lg:hidden"
-            onClick={() => setIsSidebarOpen(true)}
+            className="fixed inset-0 bg-black/20 backdrop-blur-sm z-30 md:hidden"
+            onClick={() => setIsSidebarOpen(false)}
           />
         )}
       </AnimatePresence>
