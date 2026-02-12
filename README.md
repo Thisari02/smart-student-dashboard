@@ -1,5 +1,10 @@
 # smart-student-dashboard
 
+![License](https://img.shields.io/github/license/Thisari02/smart-student-dashboard)
+![Last Commit](https://img.shields.io/github/last-commit/Thisari02/smart-student-dashboard)
+![Stars](https://img.shields.io/github/stars/Thisari02/smart-student-dashboard?style=flat)
+![Issues](https://img.shields.io/github/issues/Thisari02/smart-student-dashboard)
+
 ## Project description
 Smart Student Dashboard is a clean, data-driven learning dashboard that brings performance, attendance, and activity into one coherent view. It is designed for fast decision-making: educators can scan key metrics at a glance, drill into student profiles, and review trends through clear visualizations. The UI emphasizes clarity, responsive layouts, and reusable components so the experience stays consistent across pages and devices.
 
